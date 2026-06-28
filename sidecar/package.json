@@ -9,10 +9,13 @@
     "dev": "node --watch index.js"
   },
   "dependencies": {
-    "@whiskeysockets/baileys": "^6.7.0",
     "@supabase/supabase-js": "^2.45.0",
-    "qrcode": "^1.5.3",
-    "pino": "^9.0.0"
+    "@whiskeysockets/baileys": "^6.7.0",
+    "baileys": "github:WhiskeySockets/Baileys",
+    "pino": "^9.0.0",
+    "qrcode": "^1.5.3"
   },
-  "engines": { "node": ">=20" }
+  "engines": {
+    "node": ">=20"
+  }
 }

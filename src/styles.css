@@ -172,49 +172,55 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-}
-@utility canvas-glow::before {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  z-index: -1;
-  background:
-    radial-gradient(40% 35% at 25% 30%, oklch(0.74 0.18 148 / 0.30), transparent 70%),
-    radial-gradient(45% 40% at 80% 70%, oklch(0.42 0.07 168 / 0.22), transparent 70%),
-    radial-gradient(35% 30% at 60% 20%, oklch(0.74 0.18 148 / 0.18), transparent 70%);
-  filter: blur(40px);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    z-index: -1;
+    background:
+      radial-gradient(40% 35% at 25% 30%, oklch(0.74 0.18 148 / 0.30), transparent 70%),
+      radial-gradient(45% 40% at 80% 70%, oklch(0.42 0.07 168 / 0.22), transparent 70%),
+      radial-gradient(35% 30% at 60% 20%, oklch(0.74 0.18 148 / 0.18), transparent 70%);
+    filter: blur(40px);
+  }
 }
 
 /* Hover: 2px lift with a soft green-tinted shadow bloom */
 @utility lift-hover {
   transition: transform 150ms ease-out, box-shadow 150ms ease-out;
-}
-@utility lift-hover:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    0 12px 24px -10px oklch(0.74 0.18 148 / 0.28),
-    0 2px 4px -2px oklch(0 0 0 / 0.06);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 12px 24px -10px oklch(0.74 0.18 148 / 0.28),
+      0 2px 4px -2px oklch(0 0 0 / 0.06);
+  }
 }
 
 /* Cursor-following highlight on dashboard summary cards */
 @utility cursor-spot {
   position: relative;
   overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      180px circle at var(--mx, 50%) var(--my, 50%),
+      oklch(1 0 0 / 0.45),
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 200ms ease-out;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
 }
-@utility cursor-spot::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    180px circle at var(--mx, 50%) var(--my, 50%),
-    oklch(1 0 0 / 0.45),
-    transparent 60%
-  );
-  opacity: 0;
-  transition: opacity 200ms ease-out;
-}
-@utility cursor-spot:hover::after { opacity: 1; }
 
 /* Status badges */
 @utility status-badge {
@@ -228,10 +234,11 @@
   letter-spacing: 0.01em;
   border: 1px solid transparent;
   transition: transform 150ms ease-out, box-shadow 150ms ease-out;
-}
-@utility status-badge:hover {
-  transform: scale(1.03);
-  box-shadow: 0 2px 8px -2px oklch(0 0 0 / 0.08);
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 2px 8px -2px oklch(0 0 0 / 0.08);
+  }
 }
 @utility status-dot {
   width: 0.45rem;

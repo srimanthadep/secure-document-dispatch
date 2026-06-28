@@ -64,10 +64,6 @@ export function AppShell({ children }: { children: ReactNode }) {
               );
             })}
           </nav>
-          <button onClick={signOut}
-            className="m-3 flex items-center gap-2 rounded-md px-3 py-2 text-sm text-ink-soft hover:bg-surface-2 hover:text-ink">
-            <LogOut className="h-4 w-4" /> Sign out
-          </button>
         </aside>
 
         <div className="flex min-h-screen flex-1 flex-col">
